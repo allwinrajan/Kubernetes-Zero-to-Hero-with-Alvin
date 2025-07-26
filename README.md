@@ -1,199 +1,133 @@
-# **Kubernetes Mastery Roadmap for Enterprise-Grade Expertise**
+## **Section 1: Kubernetes Core Concepts and Architecture**
 
-**Objective:**
-To acquire in-depth knowledge and practical expertise in Kubernetes, enabling the design, deployment, scaling, and troubleshooting of highly available, secure, and performance-optimized clusters across on-premises and cloud environments. This program covers self-managed Kubernetes and managed Kubernetes services such as Amazon EKS, with a focus on production-grade practices, compliance, and integration with CI/CD pipelines.
+**Scope:**
 
----
+* Kubernetes purpose and orchestration advantages over manual deployments.
+* Cluster architecture: Control Plane vs Worker Nodes.
+* Detailed roles of API Server, etcd, Scheduler, Controller Manager, and Cloud Controller Manager.
+* Node components: Kubelet, kube-proxy, Container Runtime Interface (CRI).
+* Kubernetes API design and declarative model.
 
-## **Learning Approach**
+**Discussion Points:**
 
-* **Duration:** 90 Days
-* **Methodology:** 80% hands-on labs, 20% theoretical concepts
-* **Scope:** Kubernetes fundamentals to advanced architecture, cluster lifecycle management, security hardening, observability, and cloud-native application delivery.
-* **Certifications Alignment:** CKAD, CKA
-* **Outcome:** Enterprise-ready Kubernetes Architect capable of managing multi-cluster environments and designing fault-tolerant architectures.
-
----
-
-## **Phase 1: Core Fundamentals and Cluster Operations (Day 1–30)**
-
-**Objective:** Establish foundational Kubernetes skills and operational proficiency.
-
-### **Week 1: Containerization & Kubernetes Essentials**
-
-* Master Docker container lifecycle, image optimization, and multi-stage builds.
-* Understand container orchestration challenges and the necessity of Kubernetes.
-* Install and configure local Kubernetes environments (Minikube, KIND).
-
-**Practical Tasks:**
-
-* Build and deploy a containerized microservice application.
-* Validate Kubernetes installation, configure `kubectl`, and perform cluster health checks.
-
-**Resources:**
-
-* Kubernetes Official Documentation: [https://kubernetes.io/docs/](https://kubernetes.io/docs/)
-* CNCF Interactive Labs: [https://labs.play-with-k8s.com/](https://labs.play-with-k8s.com/)
+* Why Kubernetes uses etcd as a distributed key-value store.
+* How API Server acts as the single point of truth.
+* The importance of control plane high availability in production.
 
 ---
 
-### **Week 2: Core Kubernetes Workloads and Networking**
+## **Section 2: Kubernetes Workloads and Deployment Strategies**
 
-* Deploy and manage core Kubernetes objects: Pods, ReplicaSets, Deployments.
-* Service discovery mechanisms: ClusterIP, NodePort, and LoadBalancer.
-* Implement ConfigMaps and Secrets for configuration management.
+**Scope:**
 
-**Hands-On Exercises:**
+* Core workload objects: Pods, ReplicaSets, Deployments, StatefulSets, DaemonSets, and Jobs.
+* Deployment strategies: Rolling updates, Blue-Green deployments, Canary releases.
+* Multi-tier application deployment patterns in Kubernetes.
 
-* Deploy a multi-tier application using Deployments and Services.
-* Secure sensitive data using Kubernetes Secrets and RBAC policies.
+**Discussion Points:**
 
----
-
-### **Week 3: Scaling and Application Resilience**
-
-* Horizontal Pod Autoscaler configuration.
-* Implement Pod health checks (liveness, readiness, startup probes).
-* Configure resource requests and limits for workload optimization.
-
-**Practical Scenarios:**
-
-* Simulate workload spikes and configure autoscaling policies.
-* Deploy zero-downtime rolling updates and rollback mechanisms.
+* Difference between Deployments and StatefulSets in terms of persistence and scaling.
+* Strategies to minimize downtime during updates.
+* Common failure scenarios during deployments and mitigation techniques.
 
 ---
 
-### **Week 4: Networking and Persistent Storage**
+## **Section 3: Networking and Service Discovery**
 
-* Understand CNI plugins: Calico, Flannel, and their role in network isolation.
-* Configure Ingress resources and controllers for external routing.
-* Persistent Volumes, Persistent Volume Claims, and StorageClasses for dynamic provisioning.
+**Scope:**
 
-**Hands-On:**
+* Kubernetes networking model and CNI plugin architecture.
+* Service types: ClusterIP, NodePort, LoadBalancer, and Ingress.
+* DNS-based service discovery in Kubernetes clusters.
+* External traffic routing via Ingress controllers (NGINX, ALB).
 
-* Implement NGINX Ingress Controller.
-* Integrate a stateful workload (e.g., MySQL) using Persistent Volumes.
+**Discussion Points:**
 
----
-
-## **Phase 2: Advanced Cluster Management and Observability (Day 31–60)**
-
-**Objective:** Acquire expertise in security, high availability, observability, and upgrade strategies.
-
-### **Week 5: Security and Compliance**
-
-* Implement Role-Based Access Control (RBAC).
-* Configure Service Accounts and API access control.
-* Apply Network Policies for traffic segmentation.
-
-**Practical Exercises:**
-
-* Restrict developer access to a specific namespace using RBAC.
-* Secure communication between Pods using Network Policies.
+* How kube-proxy manages networking for services.
+* When to choose NodePort vs LoadBalancer.
+* Designing an ingress layer for multi-service microservices architecture.
 
 ---
 
-### **Week 6: Observability and Logging**
+## **Section 4: Storage and Data Persistence**
 
-* Metrics Server installation for resource monitoring.
-* Deploy Prometheus and Grafana for advanced metrics visualization.
-* Centralized logging with EFK/ELK stack integration.
+**Scope:**
 
-**Hands-On:**
+* Persistent Volume (PV) and Persistent Volume Claim (PVC) model.
+* StorageClasses and dynamic provisioning.
+* Stateful workloads and data consistency.
+* Integration with cloud-based storage (EBS, EFS) and CSI drivers.
 
-* Build custom Grafana dashboards for CPU, memory, and network monitoring.
-* Configure log aggregation with Elasticsearch and Fluentd.
+**Discussion Points:**
 
----
-
-### **Week 7: Cluster Maintenance and High Availability**
-
-* Perform cluster upgrades and patching with zero downtime.
-* Configure High Availability for control plane components.
-* Backup and restore etcd in disaster recovery scenarios.
-
-**Scenario Simulation:**
-
-* Perform controlled node drains and pod rescheduling.
-* Execute etcd backup and validate restoration.
+* How Kubernetes handles stateful applications in a stateless environment.
+* Storage binding and reclaim policies.
+* Best practices for database deployments in Kubernetes.
 
 ---
 
-### **Week 8: Resource Governance and Policy Enforcement**
+## **Section 5: Scaling, Performance, and Resource Management**
 
-* Implement PodDisruptionBudgets and ResourceQuotas.
-* Optimize cluster autoscaler for cost efficiency.
-* Apply Pod Security Standards for compliance.
+**Scope:**
 
-**Hands-On Task:**
+* Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA).
+* Cluster Autoscaler and node scaling mechanisms.
+* Resource requests, limits, and QoS classes.
+* Pod eviction and node pressure handling.
 
-* Configure namespace-specific resource limits.
-* Enforce security context constraints on workloads.
+**Discussion Points:**
 
----
-
-## **Phase 3: Enterprise Architecture and Cloud-Native Integration (Day 61–90)**
-
-**Objective:** Transition from cluster operations to architecture design and managed Kubernetes services.
-
-### **Week 9: Managed Kubernetes with Amazon EKS**
-
-* Understand EKS control plane design and AWS-managed components.
-* Configure IAM Roles for Service Accounts (IRSA) for secure integrations.
-* Deploy node groups and Fargate profiles.
-
-**Hands-On:**
-
-* Provision EKS cluster using `eksctl` and AWS CLI.
-* Deploy workloads with IAM-integrated service accounts.
+* Designing resource allocation for predictable application performance.
+* How autoscalers integrate with metrics APIs.
+* Handling burst traffic in large-scale deployments.
 
 ---
 
-### **Week 10: Cloud-Native Storage, Networking, and Scaling**
+## **Section 6: Security and Access Control**
 
-* Configure AWS ALB Ingress Controller for EKS.
-* Integrate EBS/EFS storage for persistent workloads.
-* Implement Cluster Autoscaler and Karpenter for advanced scaling.
+**Scope:**
 
-**Practical Scenario:**
+* Role-Based Access Control (RBAC) for multi-tenant clusters.
+* Service Accounts and authentication mechanisms.
+* Pod Security Standards and admission controllers.
+* Network segmentation with Network Policies.
 
-* Deploy a multi-tier application with ALB Ingress and auto-scaling policies.
-* Implement CloudWatch Container Insights for advanced observability.
+**Discussion Points:**
 
----
-
-### **Week 11: Kubernetes CI/CD and GitOps Integration**
-
-* Build GitOps pipelines with ArgoCD or Flux.
-* Deploy workloads via Helm Charts and Kustomize.
-* Integrate Jenkins or GitHub Actions with Kubernetes deployments.
-
-**Practical Exercises:**
-
-* Develop Helm charts for microservices.
-* Configure ArgoCD for declarative GitOps-based deployments.
+* Securing API server communication.
+* Practical strategies for namespace isolation.
+* Risk analysis of running privileged containers.
 
 ---
 
-### **Week 12: Troubleshooting and Enterprise-Scale Project**
+## **Section 7: Observability, Logging, and Troubleshooting**
 
-* Diagnose CrashLoopBackOff, ImagePullBackOff, and networking anomalies.
-* Perform cluster stress testing and chaos engineering using Chaos Mesh.
-* Capstone Project: Design, deploy, and secure a highly available EKS-based architecture with full CI/CD pipeline integration, autoscaling, RBAC policies, and observability stack.
+**Scope:**
+
+* Native logging and monitoring tools: Metrics Server, kube-state-metrics.
+* Advanced observability with Prometheus, Grafana, and Alertmanager.
+* Centralized logging using EFK or ELK stack.
+* Troubleshooting common issues: CrashLoopBackOff, ImagePullBackOff, network failures.
+
+**Discussion Points:**
+
+* Designing a monitoring strategy for distributed clusters.
+* Interpreting metrics for proactive scaling and fault detection.
+* Structured troubleshooting methodologies for Kubernetes workloads.
 
 ---
 
-## **Final Deliverables and Milestones**
+## **Section 8: Kubernetes in Production and Managed Solutions**
 
-* **End of 30 Days:** Proficient in deploying and managing Kubernetes workloads.
-* **End of 60 Days:** Skilled in production operations, observability, security, and HA.
-* **End of 90 Days:** Capable of architecting and operating enterprise-grade Kubernetes clusters in hybrid or multi-cloud environments.
+**Scope:**
 
----
+* Self-managed Kubernetes vs Managed Kubernetes services (Amazon EKS, GKE, AKS).
+* High Availability control plane design.
+* Cluster lifecycle management: Upgrades, backups, and disaster recovery.
+* Integrating Kubernetes with CI/CD and GitOps workflows (Helm, ArgoCD).
 
-### **Recommended Resources**
+**Discussion Points:**
 
-* Kubernetes Official Documentation: [https://kubernetes.io/docs/](https://kubernetes.io/docs/)
-* CNCF Certified Kubernetes Administrator (CKA) curriculum
-* GitHub Labs for Kubernetes: [https://github.com/kubernetes](https://github.com/kubernetes)
-* Hands-On Platforms: Katacoda, Play with Kubernetes, AWS Workshop
+* Operational challenges in self-managed clusters.
+* EKS architecture and AWS-native integrations (IAM, ALB, CloudWatch).
+* Best practices for enterprise Kubernetes deployments.
